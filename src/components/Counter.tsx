@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 const Counter: React.FC = () => {
   const [count, setCount] = useState<number>(0);
-  const [flag, setFlag] = useState<boolean>(true);
+  const [isButtonDisabled, setFlag] = useState<boolean>(true);
   const [buttonText, setText] = useState<string>("stop count");
 
   useEffect(() => {
     console.log(`Count updated to ${count}`);
-    flag ? setText("disable counter") : setText("enable counter");
-  }, [count, flag]);
+    isButtonDisabled ? setText("disable counter") : setText("enable counter");
+  }, [count, isButtonDisabled]);
 
   return (
     <div>
@@ -23,7 +23,7 @@ const Counter: React.FC = () => {
       </button>
       <button
         onClick={() => {
-          setFlag(!flag);
+          setFlag(!isButtonDisabled);
           const addButton = document.getElementById(
             "counter"
           ) as HTMLButtonElement;
